@@ -11,3 +11,6 @@ This is a python script for get code from CSDN blog.
 
 ## zabbixTest.py
 This is a zabbix api test script.
+
+## FastAPI
+This is a API for FastAPI, test API python script.
