@@ -40,4 +40,18 @@ def getHostgroup(URL = apiURL, Header = apiHeader):
     result = requests.post(url = URL, headers = Header, data = getData)
     print(result.text)    
 
+def getAllHost(URL = apiURL, Header = apiHeader):
+    getData = json.dumps({
+        "jsonrpc":"2.0",
+        "method":"hostgroup.get",
+        "params":{
+            "output":["hostgroup"]
+        },
+        "auth":loginZabbix(URL, Header),
+        "id":1
+    })
+    result = requests.post(url = URL, headers = Header, data = getData)
+    print(result.text)
+
 getHostgroup()
+getAllHost()
