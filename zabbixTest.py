@@ -66,6 +66,26 @@ def getAllHost(URL = apiURL, Header = apiHeader):
     result = requests.post(url = URL, headers = Header, data = getData)
     print(result.text)
 
+def getTemplate(URL = apiURL, Header = apiHeader, templateName):
+    data = json.dumps({
+                       "jsonrpc":"2.0",
+                       "method": "template.get",
+                       "params": {
+                                  "output": "extend",
+                                  "filter": {
+                                             "host": [
+                                                      templateName,
+                                                      ]
+                                             }
+                                  },
+                       "auth":loginZabbix(URL, Header),
+                       "id":1,
+                       })
+           
+    result = requests.post(url = URL, headers = Header, data = getData)
+    print(result.text)
+
 getHostgroup()
 getAllHostGroup()
 getAllHost()
+getTemplate('Template ICMP Ping')
